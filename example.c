@@ -1,20 +1,29 @@
 #include "c_test.h"
 
+//Example of writing tests
+
 void test1(c_test_log* log)
 {
-	c_test_assert_true(log,"test1",2 == 2);
+	int a = 2;
+	int b = 2;
+	c_test_assert_true(log,"test1",a == b);
 }
 
 void test2(c_test_log* log)
 {
-	c_test_assert_false(log,"test2",2 == 2);
+	int a = 2;
+	int b = 2;
+	c_test_assert_false(log,"test2",a != b);
 }
 
 int main(void)
 {
-	TEST tasks[2] = { &test1,&test2 };
+	//Making array of tests functions
+	int tests_count = 2;
+	TEST tasks[tests_count] = { &test1,&test2 };
 
-	c_test_run(tasks,2,"log_output.txt");
+	//Run list of tests and writing result to file
+	c_test_run(tasks,tests_count,"log_output.txt");
 
 	return 0;
 }
